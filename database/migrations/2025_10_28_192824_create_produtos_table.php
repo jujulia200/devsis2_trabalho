@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $Nome;
-            $preço;
-            $categoria;
-            $Qtd_Estoque;
-            $Estoque_Minimo
+            $table->string('nome', 100);
+            $table->float('preço');
+            $table->float('qtd_estoque');
+            $table->string('categoria', 40);
+            $table->float('estoque_minimo');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
+
 
     /**
      * Reverse the migrations.
