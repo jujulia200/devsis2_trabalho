@@ -10,44 +10,56 @@
         }
     @endphp
 
-    <form action="{{ $action }}" method="post" enctype="multipart/form-data">
-        @csrf
+<form action="{{ $action }}" method="post" enctype="multipart/form-data">
+    @csrf
 
-        @if (!empty($dado->id))
-            @method('put')
-        @endif
+    @if (!empty($dado->id))
+        @method('put')
+    @endif
 
-        <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
-        <h1>Formulário Cliente</h1>
+    <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-        <div class="row">
-            <div class="col">
-                <label for="">Nome</label>
-                <input type="text" name="nome" value="{{ old('nome', $dado->nome ?? '') }}">
-            </div>
-            <div class="col">
-                <label for="">CPF</label>
-                <input type="text" name="cpf" value="{{ old('cpf', $dado->cpf ?? '') }}">
-            </div>
-            <div class="col">
-                <label for="">email</label>
-                <input type="text" name="email" value="{{ old('email', $dado->email ?? '') }}">
-            </div>
-            <div class="col">
-                <label for="">Telefone</label>
-                <input type="text" name="telefone" value="{{ old('telefone', $dado->telefone ?? '') }}">
-            </div>
-            <div class="col">
-                <label for="">Endereco</label>
-                <input type="text" name="endereco" value="{{ old('endereco', $dado->endereco ?? '') }}">
-            </div>
+    <h1 class="mb-4">Formulário de Cliente</h1>
 
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" id="nome" name="nome" class="form-control" value="{{ old('nome', $dado->nome ?? '') }}">
+            </div>
+            <div class="col-md-6">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" id="cpf" name="cpf" class="form-control" value="{{ old('cpf', $dado->cpf ?? '') }}">
+            </div>
         </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="text" id="email" name="email" class="form-control" value="{{ old('email', $dado->email ?? '') }}">
+            </div>
+            <div class="col-md-6">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" id="telefone" name="telefone" class="form-control" value="{{ old('telefone', $dado->telefone ?? '') }}">
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <label for="endereco" class="form-label">Endereço</label>
+                <input type="text" id="endereco" name="endereco" class="form-control" value="{{ old('endereco', $dado->endereco ?? '') }}">
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col">
-                <button type="submit" class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
+            <div class="col d-flex gap-2">
+                <button type="submit" class="btn btn-success">
+                    {{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}
+                </button>
                 <a href="{{ url('cliente') }}" class="btn btn-primary">Voltar</a>
             </div>
         </div>
-    </form>
+    </div>
+</form>
+
 @stop
