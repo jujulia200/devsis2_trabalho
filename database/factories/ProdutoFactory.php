@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Produto>
  */
 class ProdutoFactory extends Factory
+
+
 {
     /**
      * Define the model's default state.
@@ -17,7 +19,12 @@ class ProdutoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nome' => $this->faker->name,
+            'preco' => $this->faker->numerify('#####'),
+            'qtd_estoque' => $this->faker->integer(),
+            'categoria' => null,
+            'estoque_minimo' => $this->faker->integer(),
+
         ];
     }
 }

@@ -17,7 +17,12 @@ class FornecedorFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nome' => $this->faker->name,
+            'cpf' => $this->faker->numerify('###########'),
+            'email' => $this->faker->name,
+            'telefone' => $this->faker->phoneNumber(),
+            'endereco' => $this->faker->name,
+            'produto' => $this->faker->name,
         ];
     }
 }
