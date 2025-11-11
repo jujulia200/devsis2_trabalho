@@ -92,7 +92,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="8" class="text-center py-4 text-muted">
+                                    <td colspan="8" class="text-center py-4  text-white">
                                         Nenhum cliente encontrado.
                                     </td>
                                 </tr>
