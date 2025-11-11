@@ -17,10 +17,10 @@ return new class extends Migration
             $preço;
             $categoria;
             $Qtd_Estoque;
-            $Estoque_Minimo
+            $Estoque_Minimo;
             $table->timestamps();
-        });
-    }
+          })
+        }
 
     /**
      * Reverse the migrations.
