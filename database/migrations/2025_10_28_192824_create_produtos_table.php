@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,18 +10,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
-        
-        Schema::create('produtos', function (Blueprint $table) {
+          Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 100);
-            $table->float('preço');
+            $table->float('preco');
             $table->float('qtd_estoque');
             $table->string('categoria', 40);
             $table->float('estoque_minimo');
             $table->timestamps();
         });
-        Schema::enableForeignKeyConstraints();
     }
 
 

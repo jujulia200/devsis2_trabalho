@@ -17,20 +17,14 @@ class ProdutoFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-
-
     {
         return [
-        'nome' => $this->faker->name,
-        'preco' => $this->faker->numerify('#####'),
-        'qtd_estoque' => $this->faker->integer(),
-        'categoria' => null,
-        'estoque_minimo' => $this->faker->integer(),
-        
+            'nome' => $this->faker->name,
+            'preco' => $this->faker->numerify('#####'),
+            'qtd_estoque' => $this->faker->integer(),
+            'categoria' => null,
+            'estoque_minimo' => $this->faker->integer(),
+
         ];
     }
-
-
 }
-
-
