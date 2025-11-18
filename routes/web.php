@@ -32,6 +32,14 @@ Route::get('/produto/create', [ProdutoController::class,'create'])->name('produt
 Route::get('/produto/edit/{id}', [ProdutoController::class, 'edit'])->name('produto.edit');
 Route::put('/produto/update/{id}', [ProdutoController::class, 'update'])->name('produto.update');
 Route::delete('produto/{id}', [ProdutoController::class, 'destroy'])->name('produto.destroy');
+
+Route::get('/fornecedor', [FornecedorController::class,'index'])->name('fornecedor.index');
+Route::post('/fornecedor/store', [FornecedorController::class,'store'])->name('fornecedor.store');
+Route::post('/fornecedor/search',[FornecedorController::class, 'search'])->name('fornecedor.search');
+Route::get('/fornecedor/create', [FornecedorController::class,'create'])->name('fornecedor.create');
+Route::get('/fornecedor/edit/{id}', [FornecedorController::class, 'edit'])->name('fornecedor.edit');
+Route::put('/fornecedor/update/{id}', [FornecedorController::class, 'update'])->name('fornecedor.update');
+Route::delete('fornecedor/{id}', [FornecedorController::class, 'destroy'])->name('fornecedor.destroy');
 /*
 Route::get('/cliente', function () {
     return view ('cliente.list');

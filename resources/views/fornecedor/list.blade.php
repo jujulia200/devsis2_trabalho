@@ -1,13 +1,13 @@
 @extends('base')
-@section('titulo', 'Listagem de Clientes')
+@section('titulo', 'Listagem de Fornecedores')
 @section('conteudo')
 
-<h3 class="mb-4 text-center">Listagem de Clientes</h3>
+<h3 class="mb-4 text-center">Listagem de Fornecedores</h3>
 
 <div class="container mb-4">
     <div class="card shadow-sm border-0 rounded-3">
         <div class="card-body">
-            <form action="{{ route('cliente.search') }}" method="post">
+            <form action="{{ route('fornecedor.search') }}" method="post">
                 @csrf
 
                 <div class="row align-items-end g-3">
@@ -18,7 +18,8 @@
                             <option value="cpf">CPF</option>
                             <option value="email">E-mail</option>
                             <option value="telefone">Telefone</option>
-                            <option value="endereco">Endereço</option>
+                            <option value="endereco">Endereco</option>
+                            <option value="produto">Produto</option>
                         </select>
                     </div>
 
@@ -34,7 +35,7 @@
                     </div>
 
                     <div class="col-md-2 d-grid">
-                        <a href="{{ url('/cliente/create') }}" class="btn btn-success">
+                        <a href="{{ url('/fornecedor/create') }}" class="btn btn-success">
                             <i class="fa-solid fa-plus me-1"></i> Novo
                         </a>
                     </div>
@@ -49,7 +50,7 @@
     <div class="col-12">
         <div class="card shadow-lg border-0 rounded-3">
             <div class="card-body bg-dark text-white rounded-3">
-                <h4 class="mb-3 text-center">Clientes Cadastrados</h4>
+                <h4 class="mb-3 text-center">Fornecedoress Cadastrados</h4>
 
                 <div class="table-responsive">
                     <table class="table table-dark table-hover align-middle text-center">
@@ -61,6 +62,7 @@
                                 <th>Email</th>
                                 <th>Telefone</th>
                                 <th>Endereço</th>
+                                <th>Produto</th>
                                 <th colspan="2">Ações</th>
                             </tr>
                         </thead>
@@ -73,6 +75,7 @@
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->telefone }}</td>
                                     <td>{{ $item->endereco }}</td>
+                                    <td>{{ $item->produto }}</td>
                                     <td>
                                         <a href="{{ route('cliente.edit', $item->id) }}"
                                            class="btn btn-sm btn-warning text-dark fw-semibold">
@@ -80,7 +83,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('cliente.destroy', $item->id) }}" method="post" class="d-inline">
+                                        <form action="{{ route('fornecedor.destroy', $item->id) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger fw-semibold"
@@ -93,7 +96,7 @@
                             @empty
                                 <tr>
                                     <td colspan="8" class="text-center py-4 text-muted">
-                                        Nenhum cliente encontrado.
+                                        Nenhum fornecedor encontrado.
                                     </td>
                                 </tr>
                             @endforelse
