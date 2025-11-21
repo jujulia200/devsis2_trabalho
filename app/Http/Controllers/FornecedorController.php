@@ -2,90 +2,99 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fornecedor;
 use Illuminate\Http\Request;
+use App\Models\Fornecedor;
 
 class FornecedorController extends Controller
 {
     /**
-     * Lista todos os fornecedores
+     * Lista todos os fornecedores.
      */
     public function index()
     {
         $dados = Fornecedor::all();
+
         return view('fornecedor.list', ['dados' => $dados]);
     }
 
     /**
-     * Exibe o formulário
+     * Exibe o formulário de cadastro.
      */
     public function create()
     {
-        return view('fornecedor.form', ['dado' => new Fornecedor()]);
+        return view('fornecedor.form');
     }
 
     /**
-     * Valida os dados
+     * Valida os dados enviados pelo formulário.
      */
     private function validateRequest(Request $request)
     {
         $request->validate([
-            'nome'     => 'required',
-            'cpf'      => 'required',
-            'email'    => 'required|email',
+            'nome' => 'required',
+            'cpf' => 'required',
+            'email' => 'required',
             'telefone' => 'required',
             'endereco' => 'required',
-            'produto'  => 'required',
+            'produto' => 'required',
         ], [
-            'nome.required'     => 'O :attribute é obrigatório',
-            'cpf.required'      => 'O :attribute é obrigatório',
-            'email.required'    => 'O :attribute é obrigatório',
+            'nome.required' => 'O :attribute é obrigatório',
+            'cpf.required' => 'O :attribute é obrigatório',
+            'email.required' => 'O :attribute é obrigatório',
             'telefone.required' => 'O :attribute é obrigatório',
             'endereco.required' => 'O :attribute é obrigatório',
-            'produto.required'  => 'O :attribute é obrigatório',
+            'produto.required' => 'O :attribute é obrigatório',
         ]);
     }
 
     /**
-     * Armazena novo fornecedor
+     * Armazena um novo fornecedor.
      */
     public function store(Request $request)
     {
         $this->validateRequest($request);
+
         Fornecedor::create($request->all());
-        return redirect('fornecedor');
+
+        return redirect()->route('fornecedor.index');
     }
 
     /**
-     * Exibe formulário para edição
+     * Carrega dados para edição.
      */
-    public function edit(Fornecedor $fornecedor)
+    public function edit($id)
     {
-        return view('fornecedor.form', ['dado' => $fornecedor]);
+        $dado = Fornecedor::findOrFail($id);
+
+        return view('fornecedor.form', ['dado' => $dado]);
     }
 
     /**
-     * Atualiza fornecedor
+     * Atualiza um fornecedor.
      */
-    public function update(Request $request, Fornecedor $fornecedor)
+    public function update(Request $request, $id)
     {
         $this->validateRequest($request);
-        $fornecedor->update($request->all());
 
-        return redirect('fornecedor');
+        $dado = Fornecedor::findOrFail($id);
+        $dado->update($request->all());
+
+        return redirect()->route('fornecedor.index');
     }
 
     /**
-     * Deleta fornecedor
+     * Apaga um fornecedor.
      */
-    public function destroy(Fornecedor $fornecedor)
+    public function destroy($id)
     {
-        $fornecedor->delete();
-        return redirect('fornecedor');
+        $dado = Fornecedor::findOrFail($id);
+        $dado->delete();
+
+        return redirect()->route('fornecedor.index');
     }
 
     /**
-     * Pesquisa fornecedores
+     * Pesquisa fornecedores.
      */
     public function search(Request $request)
     {
@@ -93,7 +102,7 @@ class FornecedorController extends Controller
             $dados = Fornecedor::where(
                 $request->tipo,
                 'like',
-                "%{$request->valor}%"
+                "%$request->valor%"
             )->get();
         } else {
             $dados = Fornecedor::all();

@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('fornecedor', function (Blueprint $table) {
             $table->id();
             $table->string('nome',100);
-            $table->string('Cpf',16);
+            $table->string('Cpf',15);
             $table->string('email',50);
             $table->string('telefone',20)->nullable();
             $table->string('endereco',50);
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fornecedor');
+        Schema::dropIfExists('Fornecedor');
     }
 };
