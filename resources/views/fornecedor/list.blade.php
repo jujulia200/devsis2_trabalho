@@ -1,8 +1,13 @@
 @extends('base')
-@section('titulo', 'Listagem de Fornecedores')
+@section('titulo', 'Listagem de fornecedors')
 @section('conteudo')
 
-<h3 class="mb-4 text-center">Listagem de Fornecedores</h3>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<h1 class="mb-4 text-center bg-dark text-white rounded-3 py-4 px-5 shadow-lg border border-3">
+    <i class="fas fa-users me-3"></i> Listagem de fornecedores
+</h1>
+
 
 <div class="container mb-4">
     <div class="card shadow-sm border-0 rounded-3">
@@ -12,19 +17,23 @@
 
                 <div class="row align-items-end g-3">
                     <div class="col-md-3">
-                        <label for="tipo" class="form-label fw-semibold">Tipo</label>
+                        <label for="tipo" class="form-label fw-semibold">
+                            <h4>Tipo</h4>
+                        </label>
                         <select name="tipo" id="tipo" class="form-select">
                             <option value="nome">Nome</option>
                             <option value="cpf">CPF</option>
                             <option value="email">E-mail</option>
                             <option value="telefone">Telefone</option>
-                            <option value="endereco">Endereco</option>
+                            <option value="endereco">Endereço</option>
                             <option value="produto">Produto</option>
                         </select>
                     </div>
 
                     <div class="col-md-5">
-                        <label for="valor" class="form-label fw-semibold">Valor</label>
+                        <label for="valor" class="form-label fw-semibold">
+                            <h4>Valor</h4>
+                        </label>
                         <input type="text" id="valor" name="valor" class="form-control" placeholder="Digite para pesquisar...">
                     </div>
 
@@ -50,7 +59,7 @@
     <div class="col-12">
         <div class="card shadow-lg border-0 rounded-3">
             <div class="card-body bg-dark text-white rounded-3">
-                <h4 class="mb-3 text-center">Fornecedoress Cadastrados</h4>
+                <h4 class="mb-3 text-center">fornecedores Cadastrados</h4>
 
                 <div class="table-responsive">
                     <table class="table table-dark table-hover align-middle text-center">
@@ -77,11 +86,12 @@
                                     <td>{{ $item->endereco }}</td>
                                     <td>{{ $item->produto }}</td>
                                     <td>
-                                        <a href="{{ route('cliente.edit', $item->id) }}"
+                                        <a href="{{ route('fornecedor.edit', $item->id) }}"
                                            class="btn btn-sm btn-warning text-dark fw-semibold">
                                             <i class="fa-solid fa-pen-to-square me-1"></i> Editar
                                         </a>
                                     </td>
+
                                     <td>
                                         <form action="{{ route('fornecedor.destroy', $item->id) }}" method="post" class="d-inline">
                                             @csrf
@@ -95,7 +105,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="8" class="text-center py-4 text-muted">
+                                    <td colspan="8" class="text-center py-4  text-white">
                                         Nenhum fornecedor encontrado.
                                     </td>
                                 </tr>

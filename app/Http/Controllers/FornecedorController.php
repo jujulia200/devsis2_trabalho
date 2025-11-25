@@ -2,32 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Fornecedor;
+use Illuminate\Http\Request;
 
 class FornecedorController extends Controller
 {
     /**
-     * Lista todos os fornecedores.
-     */
+
+   * função vai listar todos os fornecedors e passar os dados para a blender list
+      **/
     public function index()
-    {
-        $dados = Fornecedor::all();
+     {
+        $dados = Fornecedor::All();
 
         return view('fornecedor.list', ['dados' => $dados]);
     }
 
     /**
-     * Exibe o formulário de cadastro.
+    *função chama o formulario fornecedor
      */
     public function create()
     {
         return view('fornecedor.form');
     }
 
-    /**
-     * Valida os dados enviados pelo formulário.
-     */
+    /** função valida as informações e verifica se há erros */
     private function validateRequest(Request $request)
     {
         $request->validate([
@@ -37,64 +36,81 @@ class FornecedorController extends Controller
             'telefone' => 'required',
             'endereco' => 'required',
             'produto' => 'required',
+
         ], [
             'nome.required' => 'O :attribute é obrigatório',
             'cpf.required' => 'O :attribute é obrigatório',
             'email.required' => 'O :attribute é obrigatório',
-            'telefone.required' => 'O :attribute é obrigatório',
-            'endereco.required' => 'O :attribute é obrigatório',
-            'produto.required' => 'O :attribute é obrigatório',
+            'telefone.required' => 'O :atribute é obrigatório',
+            'endereco.required' => 'O :atribute é obrigatório',
+            'produto.required' => 'O :atribute é obrigatório',
         ]);
     }
-
     /**
-     * Armazena um novo fornecedor.
+    *função que armezana as informações do formulario fornecedor
      */
     public function store(Request $request)
     {
         $this->validateRequest($request);
+        $data = $request->all();
 
-        Fornecedor::create($request->all());
+        Fornecedor::create($data);
 
-        return redirect()->route('fornecedor.index');
+        return redirect('fornecedor');
     }
 
     /**
-     * Carrega dados para edição.
+     * Display the specified resource.
+     */
+    public function show(Fornecedor $fornecedor)
+    {
+        //
+    }
+
+    /**
+   *  função edita e recebe o id, carrega os dados do fornecedor e passa os dados para o formulario
      */
     public function edit($id)
     {
+        // dd($dado);
         $dado = Fornecedor::findOrFail($id);
 
-        return view('fornecedor.form', ['dado' => $dado]);
+        return view(
+            'fornecedor.form',
+            [
+                'dado' => $dado,
+            ]
+        );
     }
 
     /**
-     * Atualiza um fornecedor.
+     *função que valida e atualiza os dados do formulario
      */
     public function update(Request $request, $id)
     {
+        //dd($request->all());
         $this->validateRequest($request);
+        $data = $request->all();
 
-        $dado = Fornecedor::findOrFail($id);
-        $dado->update($request->all());
+        Fornecedor::updateOrCreate(['id' => $id], $data);
 
-        return redirect()->route('fornecedor.index');
+        return redirect('fornecedor');
     }
 
     /**
-     * Apaga um fornecedor.
+     *função que destroi os dados do formulario
      */
     public function destroy($id)
     {
         $dado = Fornecedor::findOrFail($id);
+
         $dado->delete();
 
-        return redirect()->route('fornecedor.index');
+        return redirect('fornecedor');
     }
 
     /**
-     * Pesquisa fornecedores.
+   * função que pesquisa os dados de um formulario
      */
     public function search(Request $request)
     {
@@ -105,9 +121,9 @@ class FornecedorController extends Controller
                 "%$request->valor%"
             )->get();
         } else {
-            $dados = Fornecedor::all();
+            $dados = Fornecedor::All();
         }
 
-        return view('fornecedor.list', ['dados' => $dados]);
+        return view('fornecedor.list', ["dados" => $dados]);
     }
 }

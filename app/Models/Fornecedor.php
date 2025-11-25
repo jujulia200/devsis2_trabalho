@@ -18,4 +18,6 @@ class Fornecedor extends Model
          'endereco',
          'produto',
     ];
+
+
 }
