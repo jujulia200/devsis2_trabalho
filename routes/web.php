@@ -35,6 +35,8 @@ Route::get('/cliente/create', [ClienteController::class,'create'])->name('client
 Route::get('/cliente/edit/{id}', [ClienteController::class, 'edit'])->name('cliente.edit');
 Route::put('/cliente/update/{id}', [ClienteController::class, 'update'])->name('cliente.update');
 Route::delete('cliente/{id}', [ClienteController::class, 'destroy'])->name('cliente.destroy');
+
+
 /*
 Route::get('/fornecedor', function () {
     return view ('fornecedor.list');

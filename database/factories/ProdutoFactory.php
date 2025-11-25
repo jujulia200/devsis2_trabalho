@@ -21,9 +21,9 @@ class ProdutoFactory extends Factory
         return [
             'nome' => $this->faker->name,
             'preco' => $this->faker->numerify('#####'),
-            'qtd_estoque' => $this->faker->integer(),
-            'categoria' => null,
-            'estoque_minimo' => $this->faker->integer(),
+            'qtd_estoque' => $this->faker->randomFloat(1, 10, 40),
+            'categoria' => $this->faker->randomElement(['a', 'b', 'c', 'd', 'e']),
+            'estoque_minimo' => $this->faker->randomFloat(1, 10, 40),
 
         ];
     }
