@@ -1,56 +1,57 @@
 @extends('base')
-@section('titulo', 'Formulário Produto')
+@section('titulo', 'Formulário Cliente')
 @section('conteudo')
 
     @php
         if (!empty($dado->id)) {
-            $action = route('Produto.update', $dado->id);
+            $action = route('cliente.update', $dado->id);
         } else {
-            $action = route('Produto.store');
+            $action = route('cliente.store');
         }
     @endphp
 
-    <form action="{{ $action }}" method="post" enctype="multipart/form-data">
-        @csrf
+<form action="{{ $action }}" method="post" enctype="multipart/form-data">
+    @csrf
 
-        @if (!empty($dado->id))
-            @method('put')
-        @endif
+    @if (!empty($dado->id))
+        @method('put')
+    @endif
 
-        <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
+    <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-        <h1 class="mb-4">Formulário do produto</h1>
 
-        <div class="row">
 
-            <div class="col">
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" value="{{ old('nome', $dado->nome ?? '') }}">
+    <div class="rounded-3 py-4 px-5 shadow-lg border border-3 bg-dark">
+      <h1 class="mb-4 text-white">Formulário de Cliente</h1>
+        <div class="row mb-3 text-white">
+            <div class="col-md-6">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" id="nome" name="nome" class="form-control" value="{{ old('nome', $dado->nome ?? '') }}">
             </div>
-
-            <div class="col">
-                <label for="preco">Preço</label>
-                <input type="text" name="preco" id="preco" value="{{ old('preco', $dado->preco ?? '') }}">
+            <div class="col-md-6">
+                <label for="preco" class="form-label">Preco</label>
+                <input type="text" id="preco" name="preco" class="form-control" value="{{ old('preco', $dado->preco ?? '') }}">
             </div>
-
-            <div class="col">
-                <label for="categoria">Categoria</label>
-                <input type="text" name="categoria" id="categoria" value="{{ old('categoria', $dado->categoria ?? '') }}">
-            </div>
-
-            <div class="col">
-                <label for="Qtd_Estoque">Qtd_Estoque</label>
-                <input type="text" name="Qtd_Estoque" id="Qtd_Estoque" value="{{ old('Qtd_Estoque', $dado->Qtd_Estoque ?? '') }}">
-            </div>
-
-            <div class="col">
-                <label for="Estoque_Minimo">Estoque_Minimo</label>
-                <input type="text" name="Estoque_Minimo" id="Estoque_Minimo" value="{{ old('Estoque_Minimo', $dado->Estoque_Minimo ?? '') }}">
-            </div>
-
         </div>
 
-       
+        <div class="row mb-3 text-white">
+            <div class="col-md-6">
+                <label for="categoria" class="form-label">Categoria</label>
+                <input type="text" id="categoria" name="categoria" class="form-control" value="{{ old('categoria', $dado->categoria ?? '') }}">
+            </div>
+            <div class="col-md-6">
+                <label for="qtd_estoque" class="form-label">Qtd_Estoque</label>
+                <input type="float" id="qtd_estoque" name="qtd_estoque" class="form-control" value="{{ old('qtd_estoque', $dado->qtd_estoque ?? '') }}">
+            </div>
+        </div>
+
+        <div class="row mb-4 text-white">
+            <div class="col-md-12">
+                <label for="estoque_minimo" class="form-label">Estoque_Minimo</label>
+                <input type="float" id="estoque_minimo" name="estoque_minimo" class="form-control" value="{{ old('estoque_minimo', $dado->estoque_minimo ?? '') }}">
+            </div>
+        </div>
+
         <div class="col">
             <label for="categoria_id">Categoria</label>
             <select name="categoria_id" id="categoria_id">
