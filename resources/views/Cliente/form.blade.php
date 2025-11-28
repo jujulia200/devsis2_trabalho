@@ -21,7 +21,7 @@
 
 
 
-    <div class="rounded-3 py-4 px-5 shadow-lg border border-3 bg-dark">
+    <div class="rounded-3 py-4 px-5 shadow-lg border border-3 bg-primary">
       <h1 class="mb-4 text-white">Formulário de Cliente</h1>
         <div class="row mb-3 text-white">
             <div class="col-md-6">
@@ -57,7 +57,7 @@
                 <button type="submit" class="btn btn-success">
                     {{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}
                 </button>
-                <a href="{{ url('cliente') }}" class="btn btn-primary">Voltar</a>
+                <a href="{{ url('cliente') }}" class="btn btn-dark">Voltar</a>
             </div>
         </div>
     </div>

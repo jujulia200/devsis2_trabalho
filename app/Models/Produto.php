@@ -13,10 +13,10 @@ class Produto extends Model
 
     protected $fillable =[
         'nome',
-        'preço',
+        'preco',
         'qtd_estoque',
         'categoria',
         'estoque_minimo',
-        'produto',
+
    ];
 }

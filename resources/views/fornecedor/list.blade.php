@@ -4,8 +4,8 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-<h1 class="mb-4 text-center bg-dark text-white rounded-3 py-4 px-5 shadow-lg border border-3">
-    <i class="fas fa-users me-3"></i> Listagem de fornecedores
+<h1 class="mb-4 text-center bg-success text-white rounded-3 py-4 px-5 shadow-lg border border-3">
+    <i class="fa-solid fa-user-gear"></i> Listagem de fornecedores
 </h1>
 
 

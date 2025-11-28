@@ -4,8 +4,8 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-<h1 class="mb-4 text-center bg-dark text-white rounded-3 py-4 px-5 shadow-lg border border-3">
-    <i class="fas fa-users me-3"></i> Listagem de Produtos
+<h1 class="mb-4 text-center bg-warning text-white rounded-3 py-4 px-5 shadow-lg border border-3">
+    <i class="fa-solid fa-cart-shopping"></i> Listagem de Produtos
 </h1>
 
 
@@ -45,6 +45,11 @@
                     <div class="col-md-2 d-grid">
                         <a href="{{ url('/produto/create') }}" class="btn btn-success">
                             <i class="fa-solid fa-plus me-1"></i> Novo
+                        </a>
+                    </div>
+                    <div class="col-md-2 d-grid">
+                        <a href="{{ url('/produto/chart') }}" class="btn btn-success">
+                            <i class="fa-solid fa-plus me-1"></i> Gráfico
                         </a>
                     </div>
                 </div>

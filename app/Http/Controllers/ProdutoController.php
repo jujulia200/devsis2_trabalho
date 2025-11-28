@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\ProdutosQtdChart;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -9,17 +10,17 @@ class ProdutoController extends Controller
 {
     /**
 
-   * função vai listar todos os produtos e passar os dados para a blender list
-      **/
+     * função vai listar todos os produtos e passar os dados para a blender list
+     **/
     public function index()
-     {
+    {
         $dados = Produto::All();
 
         return view('produto.list', ['dados' => $dados]);
     }
 
     /**
-    *função chama o formulario produto
+     *função chama o formulario produto
      */
     public function create()
     {
@@ -45,7 +46,7 @@ class ProdutoController extends Controller
         ]);
     }
     /**
-    *função que armezana as informações do formulario produto
+     *função que armezana as informações do formulario produto
      */
     public function store(Request $request)
     {
@@ -66,7 +67,7 @@ class ProdutoController extends Controller
     }
 
     /**
-   *  função edita e recebe o id, carrega os dados do produto e passa os dados para o formulario
+     *  função edita e recebe o id, carrega os dados do produto e passa os dados para o formulario
      */
     public function edit($id)
     {
@@ -108,7 +109,7 @@ class ProdutoController extends Controller
     }
 
     /**
-   * função que pesquisa os dados de um formulario
+     * função que pesquisa os dados de um formulario
      */
     public function search(Request $request)
     {
@@ -123,5 +124,10 @@ class ProdutoController extends Controller
         }
 
         return view('produto.list', ["dados" => $dados]);
+    }
+
+    public function chart(ProdutosQtdChart $chart)
+    {
+        return view('produto.chart', ['chart' => $chart->build()]);
     }
 }

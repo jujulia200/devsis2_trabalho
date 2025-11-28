@@ -1,12 +1,12 @@
 @extends('base')
-@section('titulo', 'Formulário Cliente')
+@section('titulo', 'Formulário Produto')
 @section('conteudo')
 
     @php
         if (!empty($dado->id)) {
-            $action = route('cliente.update', $dado->id);
+            $action = route('produto.update', $dado->id);
         } else {
-            $action = route('cliente.store');
+            $action = route('produto.store');
         }
     @endphp
 
@@ -22,7 +22,7 @@
 
 
     <div class="rounded-3 py-4 px-5 shadow-lg border border-3 bg-dark">
-      <h1 class="mb-4 text-white">Formulário de Cliente</h1>
+      <h1 class="mb-4 text-white">Formulário de Produto</h1>
         <div class="row mb-3 text-white">
             <div class="col-md-6">
                 <label for="nome" class="form-label">Nome</label>
@@ -50,18 +50,6 @@
                 <label for="estoque_minimo" class="form-label">Estoque_Minimo</label>
                 <input type="float" id="estoque_minimo" name="estoque_minimo" class="form-control" value="{{ old('estoque_minimo', $dado->estoque_minimo ?? '') }}">
             </div>
-        </div>
-
-        <div class="col">
-            <label for="categoria_id">Categoria</label>
-            <select name="categoria_id" id="categoria_id">
-                @foreach ($categorias as $item)
-                    <option value="{{ $item->id }}"
-                            {{ old('categoria_id', $dado->categoria_id ?? '') == $item->id ? 'selected' : '' }}>
-                        {{ $item->nome }}
-                    </option>
-                @endforeach
-            </select>
         </div>
 
         <div class="row">

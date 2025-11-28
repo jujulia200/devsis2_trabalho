@@ -43,4 +43,5 @@ Route::get('/produto/create', [ProdutoController::class,'create'])->name('produt
 Route::get('/produto/edit/{id}', [ProdutoController::class, 'edit'])->name('produto.edit');
 Route::put('/produto/update/{id}', [ProdutoController::class, 'update'])->name('produto.update');
 Route::delete('produto/{id}', [ProdutoController::class, 'destroy'])->name('produto.destroy');
+Route::get('/produto/chart', [ProdutoController::class, 'chart'])->name('produto.chart');
 
